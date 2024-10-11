@@ -27,8 +27,15 @@ public class NotesApplication {
 	public CommandLineRunner runner() {
 		return args -> {
 
-			Patient p1 = new Patient("the patient only exercises at most once a week");
-			Patient p2 = new Patient("demo notes");
+			Patient p1 = new Patient(1L, "Patient: TestNone Practitioner's\n" +
+					"notes/recommendations: Patient states that\n" +
+					"they are 'feeling terrific' Weight at or below\n" +
+					"recommended level");
+			Patient p2 = new Patient(2L, "Patient: TestBorderline Practitioner's\n" +
+					"notes/recommendations: Patient states that\n" +
+					"they are feeling a great deal of stress at work\n" +
+					"Patient also complains that their hearing\n" +
+					"seems Abnormal as of late\n");
 
 			patientRepository.insert(p1);
 			patientRepository.insert(p2);

@@ -1,12 +1,14 @@
 package com.openclassrooms.notes.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Data
+@AllArgsConstructor
 public class Patient {
 
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,11 +16,8 @@ public class Patient {
 
 //     get id from the first microservice
     @Id
-    private Long patientId;
+    private Long id;
     @Column
     private String note;
 
-    public Patient(String note) {
-        this.note = note;
-    }
 }

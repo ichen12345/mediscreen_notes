@@ -7,14 +7,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/notes")
+@RequestMapping("/patHistory")
 public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @PutMapping
-    public Patient updateNotes(@RequestBody Patient patient) {
-        return patientService.updateNotes(patient);
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.OK) // You can change this based on your requirements
+    public Patient addNote(@RequestParam Long patId, @RequestParam String note) {
+        return patientService.updateNotes(patId, note);
     }
 
 
