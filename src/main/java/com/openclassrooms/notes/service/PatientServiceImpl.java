@@ -17,12 +17,7 @@ public class PatientServiceImpl implements PatientService{
         Patient original = patientRepository.findById(patientId)
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found with ID: " + patientId));
 
-        String existingNotes = original.getNote();
-        if (existingNotes == null || existingNotes.isEmpty()) {
-            original.setNote(newNote);
-        } else {
-            original.setNote(existingNotes + "\n" + newNote);
-        }
+        original.getNote().add(newNote);
 
         return patientRepository.save(original);
 

@@ -13,7 +13,7 @@ public class PatientController {
     PatientService patientService;
 
     @PostMapping("/add")
-    @ResponseStatus(HttpStatus.OK) // You can change this based on your requirements
+    @ResponseStatus(HttpStatus.OK) 
     public Patient addNote(@RequestParam Long patId, @RequestParam String note) {
         return patientService.updateNotes(patId, note);
     }

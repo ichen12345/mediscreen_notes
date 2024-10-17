@@ -6,6 +6,8 @@ import lombok.Data;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document
 @Data
 @AllArgsConstructor
@@ -17,7 +19,16 @@ public class Patient {
 //     get id from the first microservice
     @Id
     private Long id;
+
     @Column
-    private String note;
+    private Long patId;
+
+    public Patient(Long patId, List<String> note) {
+        this.patId = patId;
+        this.note = note;
+    }
+
+    @Column
+    private List<String> note;
 
 }

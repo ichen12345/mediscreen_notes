@@ -11,6 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class NotesApplication {
 
@@ -27,15 +30,13 @@ public class NotesApplication {
 	public CommandLineRunner runner() {
 		return args -> {
 
-			Patient p1 = new Patient(1L, "Patient: TestNone Practitioner's\n" +
-					"notes/recommendations: Patient states that\n" +
-					"they are 'feeling terrific' Weight at or below\n" +
-					"recommended level");
-			Patient p2 = new Patient(2L, "Patient: TestBorderline Practitioner's\n" +
-					"notes/recommendations: Patient states that\n" +
-					"they are feeling a great deal of stress at work\n" +
-					"Patient also complains that their hearing\n" +
-					"seems Abnormal as of late\n");
+			List<String> notes1 = new ArrayList<>();
+			notes1.add("Patient: TestNone Practitioner's notes/recommendations: Patient states that they are 'feeling terrific'. Weight at or below recommended level.");
+			Patient p1 = new Patient(1L, notes1);
+
+			List<String> notes2 = new ArrayList<>();
+			notes2.add("Patient: TestBorderline Practitioner's notes/recommendations: Patient states that they are feeling a great deal of stress at work. Patient also complains that their hearing seems abnormal as of late.");
+			Patient p2 = new Patient(2L, notes2);
 
 			patientRepository.insert(p1);
 			patientRepository.insert(p2);

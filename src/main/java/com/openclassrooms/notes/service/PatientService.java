@@ -4,6 +4,6 @@ import com.openclassrooms.notes.entity.Patient;
 
 public interface PatientService {
 
-    Patient updateNotes(Long patientId, String note);
+    Patient updateNotes(Long patId, String note);
 
 }
