@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -11,24 +12,19 @@ import java.util.List;
 @Document
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Patient {
 
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-
-//     get id from the first microservice
     @Id
-    private Long id;
+    private String id; // Change this to String for MongoDB ObjectId support
 
-    @Column
     private Long patId;
+
+    private List<String> note;
 
     public Patient(Long patId, List<String> note) {
         this.patId = patId;
         this.note = note;
     }
-
-    @Column
-    private List<String> note;
 
 }

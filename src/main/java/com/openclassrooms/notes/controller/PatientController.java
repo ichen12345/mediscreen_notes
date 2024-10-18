@@ -18,5 +18,4 @@ public class PatientController {
         return patientService.updateNotes(patId, note);
     }
 
-
 }

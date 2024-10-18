@@ -6,4 +6,6 @@ public interface PatientService {
 
     Patient updateNotes(Long patId, String note);
 
+//    Patient deleteNote(String patientId, String noteToDelete);
+
 }

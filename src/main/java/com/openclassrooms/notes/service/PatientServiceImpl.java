@@ -6,6 +6,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PatientServiceImpl implements PatientService{
 
@@ -13,13 +15,26 @@ public class PatientServiceImpl implements PatientService{
     PatientRepository patientRepository;
 
     @Override
-    public Patient updateNotes(Long patientId, String newNote) {
-        Patient original = patientRepository.findById(patientId)
-                .orElseThrow(() -> new EntityNotFoundException("Patient not found with ID: " + patientId));
+    public Patient updateNotes(Long patId, String newNote) {
+        Patient original = patientRepository.findByPatId(patId)
+                .orElseThrow(() -> new EntityNotFoundException("Patient not found with ID: " + patId));
 
         original.getNote().add(newNote);
 
         return patientRepository.save(original);
 
     }
+
+//    @Override
+//    public Patient deleteNote(Long patientId, String noteToDelete) {
+//        Patient original = patientRepository.findById(patientId)
+//                .orElseThrow(() -> new EntityNotFoundException("Patient not found with ID: " + patientId));
+//
+//        List<String> notes = original.getNote();
+//        if (notes.remove(noteToDelete)) {
+//            return patientRepository.save(original);
+//        } else {
+//            throw new IllegalArgumentException("Note not found: " + noteToDelete);
+//        }
+//    }
 }
