@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PatientServiceImpl implements PatientService{
@@ -23,6 +24,16 @@ public class PatientServiceImpl implements PatientService{
 
         return patientRepository.save(original);
 
+    }
+
+    @Override
+    public Patient findAPatient(Long patId) {
+        Optional<Patient> patientOpt = patientRepository.findByPatId(patId);
+        if (patientOpt.isEmpty()) {
+            System.out.println("Patient with patId " + patId + " not found in the database.");
+        }
+        return patientOpt.orElseThrow(() -> new EntityNotFoundException("Patient not found"));
+//        return patientRepository.findById(stringPatId).orElseThrow(() -> new EntityNotFoundException("Patient not found"));
     }
 
 //    @Override
