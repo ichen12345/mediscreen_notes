@@ -68,5 +68,34 @@ public class PatientServiceImplTest {
         verify(patientRepository, times(1)).findByPatId(2L);
         verify(patientRepository, times(0)).save(any());
     }
+
+    @Test
+    public void testFindAPatient_Success() {
+        // Mock the repository to return an Optional of patient when patId is found
+        when(patientRepository.findByPatId(2L)).thenReturn(Optional.of(patient));
+
+        // Call the method under test
+        Patient result = patientService.findAPatient(2L);
+
+        // Verify the results
+        assertNotNull(result);
+        assertEquals(patient, result);
+        verify(patientRepository, times(1)).findByPatId(2L);
+    }
+
+    @Test
+    public void testFindAPatient_NotFound() {
+        // Mock the repository to return an empty Optional when patId is not found
+        when(patientRepository.findByPatId(2L)).thenReturn(Optional.empty());
+
+        // Call the method under test and expect an exception
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class, () -> {
+            patientService.findAPatient(2L);
+        });
+
+        // Verify the exception message and behavior
+        assertEquals("Patient not found", exception.getMessage());
+        verify(patientRepository, times(1)).findByPatId(2L);
+    }
 }
 

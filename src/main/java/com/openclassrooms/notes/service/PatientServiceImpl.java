@@ -33,7 +33,6 @@ public class PatientServiceImpl implements PatientService{
             System.out.println("Patient with patId " + patId + " not found in the database.");
         }
         return patientOpt.orElseThrow(() -> new EntityNotFoundException("Patient not found"));
-//        return patientRepository.findById(stringPatId).orElseThrow(() -> new EntityNotFoundException("Patient not found"));
     }
 
 //    @Override

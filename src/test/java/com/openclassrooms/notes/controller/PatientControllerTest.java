@@ -64,4 +64,33 @@ public class PatientControllerTest {
         assertEquals("Patient not found with ID: 2", exception.getMessage());
         verify(patientService, times(1)).updateNotes(2L, note);
     }
+
+    @Test
+    public void testFindAPatient_Success() {
+        // Mock the service to return the patient
+        when(patientService.findAPatient(2L)).thenReturn(patient);
+
+        // Call the controller method
+        Patient result = patientController.findAPatient(2L);
+
+        // Verify the results
+        assertNotNull(result);
+        assertEquals(patient, result);
+        verify(patientService, times(1)).findAPatient(2L);
+    }
+
+    @Test
+    public void testFindAPatient_NotFound() {
+        // Mock the service to throw EntityNotFoundException
+        when(patientService.findAPatient(2L)).thenThrow(new EntityNotFoundException("Patient not found with ID: 2"));
+
+        // Call the controller method and expect an exception
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class, () -> {
+            patientController.findAPatient(2L);
+        });
+
+        // Verify the exception message
+        assertEquals("Patient not found with ID: 2", exception.getMessage());
+        verify(patientService, times(1)).findAPatient(2L);
+    }
 }
