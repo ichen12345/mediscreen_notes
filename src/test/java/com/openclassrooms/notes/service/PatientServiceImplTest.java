@@ -2,8 +2,6 @@ package com.openclassrooms.notes.service;
 
 import com.openclassrooms.notes.entity.Patient;
 import com.openclassrooms.notes.repository.PatientRepository;
-import com.openclassrooms.notes.service.PatientServiceImpl;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.Optional;
 

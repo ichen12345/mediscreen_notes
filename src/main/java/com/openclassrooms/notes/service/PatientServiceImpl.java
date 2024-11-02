@@ -2,10 +2,10 @@ package com.openclassrooms.notes.service;
 
 import com.openclassrooms.notes.entity.Patient;
 import com.openclassrooms.notes.repository.PatientRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +33,11 @@ public class PatientServiceImpl implements PatientService{
             System.out.println("Patient with patId " + patId + " not found in the database.");
         }
         return patientOpt.orElseThrow(() -> new EntityNotFoundException("Patient not found"));
+    }
+
+    @Override
+    public List<Patient> findAllPatient() {
+        return patientRepository.findAll();
     }
 
 //    @Override

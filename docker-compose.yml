@@ -1,25 +1,27 @@
 version: "3.8"
 services:
+  notes:
+    container_name: app-notes-mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: mediscreenmongo
+      ME_CONFIG_MONGODB_ADMINPASSWORD: passwordmongo
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    build: ./
+    ports:
+      - "8082:8082"
+    restart: always
+
   mongodb:
     image: mongo
-    container_name: mongodb
     ports:
-      - 27017:27017
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mediscreenmongo
+      MONGO_INITDB_ROOT_PASSWORD: passwordmongo
     volumes:
       - data:/data
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=mediscreenmongo
-      - MONGO_INITDB_ROOT_PASSWORD=passwordmongo
-  mongo-express:
-    image: mongo-express
-    container_name: mongo-express
-    restart: always
-    ports:
-      - 8082:8082
-    environment:
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=mediscreenmongo
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=passwordmongo
-      - ME_CONFIG_MONGODB_SERVER=mongodb
+
+
 volumes:
   data: {}
 

@@ -2,8 +2,6 @@ package com.openclassrooms.notes.controller;
 
 import com.openclassrooms.notes.entity.Patient;
 import com.openclassrooms.notes.service.PatientService;
-import com.openclassrooms.notes.controller.PatientController;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
