@@ -11,6 +11,5 @@ public interface PatientService {
     Patient findAPatient(Long patId);
 
     List<Patient> findAllPatient();
-//    Patient deleteNote(String patientId, String noteToDelete);
 
 }

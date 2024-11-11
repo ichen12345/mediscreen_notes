@@ -39,17 +39,4 @@ public class PatientServiceImpl implements PatientService{
     public List<Patient> findAllPatient() {
         return patientRepository.findAll();
     }
-
-//    @Override
-//    public Patient deleteNote(Long patientId, String noteToDelete) {
-//        Patient original = patientRepository.findById(patientId)
-//                .orElseThrow(() -> new EntityNotFoundException("Patient not found with ID: " + patientId));
-//
-//        List<String> notes = original.getNote();
-//        if (notes.remove(noteToDelete)) {
-//            return patientRepository.save(original);
-//        } else {
-//            throw new IllegalArgumentException("Note not found: " + noteToDelete);
-//        }
-//    }
 }
