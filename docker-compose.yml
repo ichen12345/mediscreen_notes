@@ -3,10 +3,7 @@ services:
   notes:
     container_name: app-notes-mongo
     environment:
-#      ME_CONFIG_MONGODB_ADMINUSERNAME: mediscreenmongo
-#      ME_CONFIG_MONGODB_ADMINPASSWORD: passwordmongo
-#      ME_CONFIG_MONGODB_SERVER: mongodb
-      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/notes_mongodb
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/patientnotes
     build: ./
     ports:
       - "8082:8082"
@@ -21,11 +18,9 @@ services:
     ports:
       - "27017:27017"
     environment:
-#      MONGO_INITDB_ROOT_USERNAME: mediscreenmongo
-#      MONGO_INITDB_ROOT_PASSWORD: passwordmongo
-      MONGO_INITDB_DATABASE: notes_mongodb
+      MONGO_INITDB_DATABASE: patientnotes
     volumes:
-      - data:/data
+      - ./mongo-data:/data/db
     networks:
       - mongodb_network
 
@@ -33,5 +28,4 @@ volumes:
   data: {}
 
 networks:
-  default:
-    name: mongodb_network
+  mongodb_network: {}  # Explicitly define the network here
