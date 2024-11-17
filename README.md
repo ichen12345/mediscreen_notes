@@ -1,6 +1,6 @@
 # Mediscreen Sprint 2 - Patient Notes
 
-This project is a **Spring Boot** application for managing patient diabetes assessments and medical notes. It allows users to view patient details, add doctor notes from medical providers, and assess diabetes risk factors based on predefined triggers. The system supports unstructured doctor notes, preserves original formatting (whitespace, newlines, etc.), and stores them in a NoSQL database (MongoDB).
+This project is a **Spring Boot** application for managing patient medical notes. It allows users to view patient details and add doctor notes from medical providers.
 
 ---
 
