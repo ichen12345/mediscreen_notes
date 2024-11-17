@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
   notes:
     container_name: app-notes-mongo
@@ -9,7 +10,7 @@ services:
       - "8082:8082"
     restart: always
     networks:
-      - mongodb_network
+      - app-network  # Use the same network as the other services
     depends_on:
       - mongodb
 
@@ -20,12 +21,12 @@ services:
     environment:
       MONGO_INITDB_DATABASE: patientnotes
     volumes:
-      - ./mongo-data:/data/db
+      - mongo_data:/data/db
     networks:
-      - mongodb_network
+      - app-network
 
 volumes:
-  data: {}
+  mongo_data:
 
 networks:
-  mongodb_network: {}  # Explicitly define the network here
+  app-network: {}
