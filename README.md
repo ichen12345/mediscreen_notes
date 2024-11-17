@@ -9,7 +9,6 @@ This project is a **Spring Boot** application for managing patient diabetes asse
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
 
 ---
 
