@@ -40,4 +40,4 @@ To run the project locally, follow these steps:
    git clone https://github.com/ichen12345/mediscreen_notes.git
 2. Run `mvn clean install` to build the project
 3. (Without Docker) Run the application with `mvn spring-boot:run`/ (With Docker) Run the application with docker using `docker compose up -d`
-4. Verify that the application is running: Open your browser and navigate to http://localhost:8083/patients to view the list of patients.
+4. Verify that the application is running: Open your browser and navigate to http://localhost:8082/patHistory to view the list of patients.
